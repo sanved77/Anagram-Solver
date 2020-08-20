@@ -41,7 +41,7 @@ class Trie {
   }
 
   anagramHelper(result, word, set, node, wordSoFar = "") {
-    if (wordSoFar.length === word.length && node.isWord && word !== wordSoFar) {
+    if (wordSoFar.length === word.length && node.isWord && word !== wordSoFar && !result.anagrams.includes(wordSoFar)) {
       result.anagrams.push(wordSoFar);
       return;
     }
@@ -49,7 +49,7 @@ class Trie {
       let len = wordSoFar.length;
       if (len !== 1) {
         if (result["" + len] === undefined) result["" + len] = [];
-        result["" + len].push(wordSoFar);
+        if (!result["" + len].includes(wordSoFar)) result["" + len].push(wordSoFar);
       }
     }
     for (let i = 0; i < word.length; i++) {

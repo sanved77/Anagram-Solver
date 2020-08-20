@@ -16,7 +16,5 @@ app.get("/", function (req, res) {
 });
 
 app.listen(PORT, () => {
-  console.log(
-    `Anagram Solver listening at http://sanved.com/anagram/api:${PORT}`
-  );
+  console.log(`Anagram Solver listening at http://sanved.com/anagram/api:${PORT}`);
 });
