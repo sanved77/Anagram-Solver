@@ -9,11 +9,14 @@ let trie = new trieDef();
 words.forEach((word) => trie.insert(word));
 
 app.get("/", function (req, res) {
-  if (!req.params.word) return res.send("Please send a word");
   let word = req.query.word;
+  if (req.query.word === undefined) return res.send("Please send a word");
+  if (/\d/.test(word)) return res.send("Numbers not allowed");
   res.send(word === undefined ? [] : trie.findAnagrams(word));
 });
 
 app.listen(PORT, () => {
-  console.log(`Anagram Solver listening at http://sanved.com/anagram:${PORT}`);
+  console.log(
+    `Anagram Solver listening at http://sanved.com/anagram/api:${PORT}`
+  );
 });

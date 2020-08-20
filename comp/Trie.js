@@ -32,7 +32,8 @@ class Trie {
 
   findAnagrams(word) {
     console.log("");
-    let result = [];
+    let result = {};
+    result.anagrams = [];
     let set = new Set();
     let node = this.root;
     this.anagramHelper(result, word, set, node);
@@ -41,8 +42,15 @@ class Trie {
 
   anagramHelper(result, word, set, node, wordSoFar = "") {
     if (wordSoFar.length === word.length && node.isWord && word !== wordSoFar) {
-      result.push(wordSoFar);
+      result.anagrams.push(wordSoFar);
       return;
+    }
+    if (node.isWord) {
+      let len = wordSoFar.length;
+      if (len !== 1) {
+        if (result["" + len] === undefined) result["" + len] = [];
+        result["" + len].push(wordSoFar);
+      }
     }
     for (let i = 0; i < word.length; i++) {
       let ch = word.charAt(i);

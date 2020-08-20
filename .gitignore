@@ -1,3 +1,4 @@
 node_modules
 words.txt
 dat/smallWorldList.json
+data_loader.js
