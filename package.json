@@ -4,9 +4,13 @@
   "description": "Anagram solver",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js",
     "start": "node index.js",
     "test": "test"
   },
   "author": "Sanved Tapkeer",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
