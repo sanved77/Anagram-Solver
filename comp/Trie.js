@@ -29,6 +29,30 @@ class Trie {
   startsWith(prefix) {
     return this.traverse(prefix) != null;
   }
+
+  findAnagrams(word) {
+    console.log("");
+    let result = [];
+    let set = new Set();
+    let node = this.root;
+    this.anagramHelper(result, word, set, node);
+    return result;
+  }
+
+  anagramHelper(result, word, set, node, wordSoFar = "") {
+    if (wordSoFar.length === word.length && node.isWord && word !== wordSoFar) {
+      result.push(wordSoFar);
+      return;
+    }
+    for (let i = 0; i < word.length; i++) {
+      let ch = word.charAt(i);
+      if (node[ch] !== undefined && !set.has(i)) {
+        set.add(i);
+        this.anagramHelper(result, word, set, node[ch], wordSoFar + ch);
+        set.delete(i);
+      }
+    }
+  }
 }
 
 module.exports = Trie;
