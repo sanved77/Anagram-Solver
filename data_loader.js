@@ -4,5 +4,5 @@ const wordList = fs.readFileSync("./words.txt", {
   encoding: "utf-8",
   flag: "r",
 });
-const words = wordList.split("\r\n");
-fs.writeFileSync("./wordList.json", JSON.stringify(words));
+const words = wordList.split("\n");
+fs.writeFileSync("./wordListTemp.json", JSON.stringify(words));
